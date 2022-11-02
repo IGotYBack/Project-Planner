@@ -17,14 +17,19 @@
 // * description
 // * deadline
 
-const btnNewTask = document.querySelector("#btnNewTask");
-// console.log(btnNewTask)
-const taskForm = document.querySelector("#form");
+const btnNewTask = document.querySelector('#btnNewTask');
+const btnDueDate = document.querySelector('#btnDueDate')
+const btnToDo = document.querySelector('#btnToDo')
+
+const taskForm = document.querySelector('#form');
 // console.log(taskForm)
 const toDoSection = document.querySelector('#toDo');
-// console.log(toDoSection)
 const inProgressSection = document.querySelector('#inProgress');
 const doneSection = document.querySelector('#done')
+
+const mainToDo = document.querySelector('#toDoMain');
+const mainProgressSection = document.querySelector('#inProgressMain');
+const mainDoneSection = document.querySelector('#doneMain')
 
 
 class Task {
@@ -100,7 +105,7 @@ const createDiv = (task, index) => {
     selectDiv.append(select);
 
     newDiv.append(infosDiv, selectDiv);
-    newDiv.classList.add('taskBlock', 'displayFlex', 'alignCenter', 'justifyBetween', 'gapLarge');
+    newDiv.classList.add('taskBlock', 'displayFlex', 'alignCenter', 'justifyBetween', 'gapNormal');
 
     return newDiv;
 }
@@ -147,7 +152,7 @@ const updateDom = () => {
 btnNewTask.addEventListener('click', () => {
     // console.log('cékliké');
     // console.log();
-    taskForm.classList.add('displayBlock');
+    taskForm.classList.toggle('showForm');
 })
 
 taskForm.addEventListener('submit', (event) => {
@@ -192,3 +197,16 @@ window.addEventListener('load', () => {
 
 })
 
+btnToDo.addEventListener('click', () => {
+    console.log("kliké")
+    mainProgressSection.classList.toggle('displayHidden');
+    mainDoneSection.classList.toggle('displayHidden');
+    mainProgressSection.classList.toggle('displayFlexColumn');
+    mainDoneSection.classList.toggle('displayFlexColumn');
+    mainToDo.classList.toggle('width33');
+    mainToDo.classList.toggle('width75');
+})
+
+btnDueDate.addEventListener('click', () => {
+    console.log("clické")
+})

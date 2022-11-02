@@ -17,6 +17,7 @@
     --clr-Secondary-300: hsl(353deg, 61%, 77%);
     --clr-Secondary-400: hsl(353deg, 61%, 67%);
     --clr-Secondary-500: hsl(353deg, 61%, 57%);
+    --clr-Secondary-600: hsl(353deg, 60%, 47%);
     --clr-Neutral-100: hsl(0deg, 0%, 100%);
     --clr-Neutral-200: hsl(0deg, 0%, 87%);
     --clr-Neutral-300: hsl(0deg, 0%, 80%);
@@ -218,6 +219,14 @@ select {
     background-color: var(--clr-Secondary-500);
 }
 
+.textSecondary600 {
+    color: var(--clr-Secondary-600);
+}
+
+.bgSecondary600 {
+    background-color: var(--clr-Secondary-600);
+}
+
 .textNeutral100 {
     color: var(--clr-Neutral-100);
 }
@@ -304,7 +313,7 @@ select {
 }
 
 .paddingTop {
-    padding-top: 1.5rem;
+    padding-top: 10rem;
 }
 
 .paddingBottom {
@@ -340,9 +349,12 @@ select {
     margin-bottom: 2rem;
 }
 
-.marginRightSmall {
+.marginRight {
     margin-right: 1rem;
-    margin-left: auto;
+}
+
+.marginLeft {
+    margin-left: 1rem;
 }
 
 /* width */
@@ -402,18 +414,32 @@ select {
 
 /* 
 =============
-COMPOSITION 
+BLOC 
 =============
 */
 
-/* #btnNewTask {
-    margin-right: 0;
-    margin-left: auto;
-} */
+.btn {
+    height: fit-content;
+    align-self: center;
+    padding: .25rem;
+    border: 2px var(--clr-Secondary-500) solid;
+    border-radius: 5px;
+    color: var(--clr-Secondary-500);
+    font-weight: 900;
+    z-index: 100;
+    min-width: 120px;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.btn:hover {
+    background-color: var(--clr-Secondary-600);
+    color: var(--clr-Neutral-100);
+}
 
 .taskBlock {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
     padding: 1rem;
     border: 2px solid var(--clr-Neutral-100);
     width: 95%;
@@ -424,18 +450,33 @@ COMPOSITION
     color: var(--clr-Secondary-400);
 }
 
+h2 {
+    border-bottom: 2px var(--clr-Secondary-500) solid;
+}
+
 /* 
 =============
 COMPOSITION 
 =============
 */
 
-.displayHidden {
-    display: none;
+.hideForm {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: -100vh;
+    background-color: var(--clr-Primary-600);
+    opacity: .98;
+    transition: 500ms;
 }
 
-.displayBlock {
-    display: block;
+.showForm {
+    top: 5%;
+}
+
+.displayHidden {
+    display: none;
 }
 
 /* ===Flex classes=== */

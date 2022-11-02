@@ -132,7 +132,7 @@ const appendDivToDom = (task, index) => {
     }
 }
 
-const updateDom = () => {
+const updateDom = (filterBydate = false) => {
     toDoSection.innerHTML = ''
     inProgressSection.innerHTML = ''
     doneSection.innerHTML = ''
@@ -140,9 +140,18 @@ const updateDom = () => {
     let retrievedTask = localStorage.getItem('storedTask')
     // console.log(retrievedTask)
 
+
     if (retrievedTask != null) {
         let tasksToLoad = JSON.parse(retrievedTask)
         // console.log(tasksToLoad)
+
+        if (filterBydate === true) {
+            tasksToLoad.sort((taskA, taskB) => {
+                return new Date(taskA.deadlineTask) - new Date(taskB.deadlineTask)
+            })
+            localStorage.setItem('storedTask', JSON.stringify(tasksToLoad))
+            tasksToLoad = JSON.parse(localStorage.getItem('storedTask'));
+        }
 
         tasksToLoad.forEach((element, index) => {
             appendDivToDom(element, index)
@@ -209,43 +218,46 @@ btnToDo.addEventListener('click', () => {
 })
 
 btnDueDate.addEventListener('click', () => {
+
+    updateDom(true)
+
     // console.log("clické")
-    const divOfDate = []
-    const datesNode = document.querySelectorAll('.date')
-    const dates = Array.from(datesNode)
+    // const divOfDate = []
+    // const datesNode = document.querySelectorAll('.date')
+    // const dates = Array.from(datesNode)
 
-    dates.sort((taskA, taskB) => { return new Date(taskA.innerText) - new Date(taskB.innerText) })
+    // dates.sort((taskA, taskB) => { return new Date(taskA.innerText) - new Date(taskB.innerText) })
 
-    dates.forEach(date => {
-        divOfDate.push(date.parentElement.parentElement)
-    });
+    // dates.forEach(date => {
+    //     divOfDate.push(date.parentElement.parentElement)
+    // });
 
-    // console.log(divOfDate)
+    // // console.log(divOfDate)
 
-    divOfDate.forEach(div => {
-        // console.log(div)
-        const section = div.parentElement
-        // console.log(div)
-        if (section === toDoSection) {
-            div.remove()
-            mainToDo.append(div)
-            divOfDate.splice(index, 1);
-            console.log(divOfDate)
-        }
+    // divOfDate.forEach(div => {
+    //     // console.log(div)
+    //     const section = div.parentElement
+    //     // console.log(div)
+    //     if (section === toDoSection) {
+    //         div.remove()
+    //         mainToDo.append(div)
+    //         // divOfDate.splice(index, 1);
+    //         console.log(divOfDate)
+    //     }
 
-        if (section === inProgressSection) {
-            div.remove()
-            mainProgressSection.append(div)
-        }
+    //     if (section === inProgressSection) {
+    //         div.remove()
+    //         mainProgressSection.append(div)
+    //     }
 
-        if (section === doneSection) {
-            div.remove()
-            mainDoneSection.append(div)
-        }
-        // console.log(div)
-        // console.log(typeof div)
-        // console.log(div.innerText)
-    })
+    //     if (section === doneSection) {
+    //         div.remove()
+    //         mainDoneSection.append(div)
+    //     }
+    //     // console.log(div)
+    //     // console.log(typeof div)
+    //     // console.log(div.innerText)
+    // })
 
     // toDoSection.innerHTML = ''
     // inProgressSection.innerHTML = ''

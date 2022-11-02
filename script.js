@@ -55,6 +55,7 @@ const createDiv = (task, index) => {
     descriptionP.innerText = task.descriptionTask;
     // descriptionP.classList.add('justifyText')
     deadlineP.innerText = task.deadlineTask;
+    deadlineP.classList.add('date')
     // console.log(deadlineP);
     // console.log(deadlineTask);
     infosDiv.append(nameP, descriptionP, deadlineP);
@@ -86,18 +87,18 @@ const createDiv = (task, index) => {
     select.addEventListener('change', (event) => {
 
         let retrievedTask = localStorage.getItem('storedTask');
-        let taskToLoad = JSON.parse(retrievedTask);
-        // console.log(taskToLoad)
+        let tasksToLoad = JSON.parse(retrievedTask);
+        // console.log(tasksToLoad)
 
         // Récupérer statut actuel
         let statusOfTask = event.target.value;
         // console.log(statusOfTask)
-        taskToLoad.splice(index, 1);
+        tasksToLoad.splice(index, 1);
         // Changer valeur du statut 
         task.statusTask = statusOfTask;
-        taskToLoad.push(task)
+        tasksToLoad.push(task)
         // console.log(task)
-        localStorage.setItem(`storedTask`, JSON.stringify(taskToLoad))
+        localStorage.setItem(`storedTask`, JSON.stringify(tasksToLoad))
 
         updateDom()
     })
@@ -140,10 +141,10 @@ const updateDom = () => {
     // console.log(retrievedTask)
 
     if (retrievedTask != null) {
-        let taskToLoad = JSON.parse(retrievedTask)
-        // console.log(taskToLoad)
+        let tasksToLoad = JSON.parse(retrievedTask)
+        // console.log(tasksToLoad)
 
-        taskToLoad.forEach((element, index) => {
+        tasksToLoad.forEach((element, index) => {
             appendDivToDom(element, index)
         });
     }
@@ -159,7 +160,7 @@ taskForm.addEventListener('submit', (event) => {
     // console.log(e);
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    taskForm.classList.remove('displayBlock');
+    taskForm.classList.remove('showForm');
 
     const nameTask = data.get('name');
     // console.log(nameTask);
@@ -198,7 +199,7 @@ window.addEventListener('load', () => {
 })
 
 btnToDo.addEventListener('click', () => {
-    console.log("kliké")
+    // console.log("kliké")
     mainProgressSection.classList.toggle('displayHidden');
     mainDoneSection.classList.toggle('displayHidden');
     mainProgressSection.classList.toggle('displayFlexColumn');
@@ -208,5 +209,44 @@ btnToDo.addEventListener('click', () => {
 })
 
 btnDueDate.addEventListener('click', () => {
-    console.log("clické")
+    // console.log("clické")
+    const divOfDate = []
+    const datesNode = document.querySelectorAll('.date')
+    const dates = Array.from(datesNode)
+
+    dates.sort((taskA, taskB) => { return new Date(taskA.innerText) - new Date(taskB.innerText) })
+
+    dates.forEach(date => {
+        divOfDate.push(date.parentElement.parentElement)
+    });
+
+    // console.log(divOfDate)
+
+    divOfDate.forEach(div => {
+        // console.log(div)
+        const section = div.parentElement
+        // console.log(div)
+        if (section === toDoSection) {
+            div.remove()
+            mainToDo.append(div)
+        }
+
+        if (section === inProgressSection) {
+            div.remove()
+            mainProgressSection.append(div)
+        }
+
+        if (section === doneSection) {
+            div.remove()
+            mainDoneSection.append(div)
+        }
+        console.log(div)
+        // console.log(typeof div)
+        // console.log(div.innerText)
+    })
+
+    // toDoSection.innerHTML = ''
+    // inProgressSection.innerHTML = ''
+    // doneSection.innerHTML = ''
+
 })

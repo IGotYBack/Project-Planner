@@ -378,6 +378,10 @@ select {
     width: 25%;
 }
 
+.widthContent {
+    width: fit-content;
+}
+
 /* Valeurs texte */
 .retourLigne {
     word-break: break-word;

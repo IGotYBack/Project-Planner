@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Planner</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- JS -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="bgPrimary300 displayFlex justifyBetween">
+        <nav>
+            <ul>
+                <!-- <li><i class="fa-solid fa-list-check"></i></li>
+                <li></li> -->
+            </ul>
+        </nav>
+        <h1 class="">Project Planner</h1>
+        <button id="btnNewTask">Add a new task</button>
+    </header>
+    <main class="marginNormal displayFlexColumn">
+        <div class="marginNormal displayFlex justifyCenter">
+            <section class="width33 displayFlexColumn alignCenter">
+                <h2>To Do</h2>
+                <div id="toDo" class="width75 displayFlexColumn alignCenter">
+
+                </div>
+
+                <!-- <div class="taskBlock displayFlex alignCenter">
+                    <div>
+                        <p>Name : nom donné par utilisateur</p>
+                        <p>Description : description donnée par utilisateur</p>
+                        <p>Deadline : date donnée par utilisateur</p>
+                    </div>
+                    <div>
+                        <select name="" id="">
+                            <option value="">To do</option>
+                            <option value="">In progress</option>
+                            <option value="">Done</option>
+                        </select>
+                    </div>
+                </div> -->
+                <!-- 
+                <div class="taskBlock">
+                    <p>Name : nom donné par utilisateur</p>
+                    <p>Description : description donnée par utilisateur</p>
+                    <p>Deadline : date donnée par utilisateur</p>
+                </div>
+
+                <div class="taskBlock">
+                    <p>Name : nom donné par utilisateur</p>
+                    <p>Description : description donnée par utilisateur</p>
+                    <p>Deadline : date donnée par utilisateur</p>
+                </div> -->
+            </section>
+            <section class="width33 displayFlexColumn alignCenter">
+                <h2>In Progress</h2>
+                <div id="inProgress" class="width75 displayFlexColumn alignCenter">
+
+                </div>
+            </section>
+            <section class="width33 displayFlexColumn alignCenter">
+                <h2>Done</h2>
+                <div id="done" class="width75 displayFlexColumn alignCenter">
+
+                </div>
+            </section>
+        </div>
+
+
+        <form class="displayHidden" action="" id="form">
+            <div class="width75 displayFlexColumn">
+                <label for="name">Task name</label>
+                <input class="marginNormal" type="text" name="name" id="name" placeholder="Name of your task">
+            </div>
+            <div class="width75 displayFlexColumn">
+                <label for="description">Description</label>
+                <textarea class="marginNormal" name="description" id="description" cols="30" rows="10"></textarea>
+            </div>
+            <div class="width75 displayFlexColumn">
+                <label for="deadline">Deadline</label>
+                <input class="marginNormal" type="date" name="deadline" id="deadline">
+            </div>
+            <input type="submit" id="btnSubmit">
+            <!-- <button i id="btnSubmit">Submit</button> -->
+        </form>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

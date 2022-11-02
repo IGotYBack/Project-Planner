@@ -88,7 +88,7 @@ const createDiv = (task, index) => {
 
         let retrievedTask = localStorage.getItem('storedTask');
         let tasksToLoad = JSON.parse(retrievedTask);
-        // console.log(tasksToLoad)
+        console.log(tasksToLoad)
 
         // Récupérer statut actuel
         let statusOfTask = event.target.value;
@@ -229,6 +229,8 @@ btnDueDate.addEventListener('click', () => {
         if (section === toDoSection) {
             div.remove()
             mainToDo.append(div)
+            divOfDate.splice(index, 1);
+            console.log(divOfDate)
         }
 
         if (section === inProgressSection) {
@@ -240,7 +242,7 @@ btnDueDate.addEventListener('click', () => {
             div.remove()
             mainDoneSection.append(div)
         }
-        console.log(div)
+        // console.log(div)
         // console.log(typeof div)
         // console.log(div.innerText)
     })
